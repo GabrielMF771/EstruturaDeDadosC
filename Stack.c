@@ -38,12 +38,11 @@ int main(){
     printStack(&s);
     printf("Topo da pilha após a remoção: %d\n", peek(&s));
 
-    //Liberando a memÃ³ria da pilha.
+    //Liberando a memória da pilha.
     freeStack(&s);
 
     return 0;
 }
-
 
 void initializeStack(Stack *s, int initialCapacity) {
     if (s == NULL) {
