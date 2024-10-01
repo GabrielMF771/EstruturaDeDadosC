@@ -9,21 +9,13 @@ typedef struct {
 } Stack;
 
 void initializeStack(Stack *s, int initialCapacity);
-
 void resizeStack(Stack *s);
-
 int isStackFull(Stack *s);
-
 int isStackEmpty(Stack *s);
-
 void freeStack(Stack *s);
-
 void printStack(Stack *s);
-
 void push(Stack *s, int value);
-
 int pop(Stack *s);
-
 int peek(Stack *s);
 
 int main(){
