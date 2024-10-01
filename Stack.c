@@ -36,7 +36,7 @@ int main(){
 
     printf("\n");
     printStack(&s);
-    printf("Topo da pilha ap√≥s a remo√ß√£o: %d\n", peek(&s));
+    printf("Topo da pilha apÛs a remoÁ„o: %d\n", peek(&s));
 
     //Liberando a mem√≥ria da pilha.
     freeStack(&s);
