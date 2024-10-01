@@ -36,7 +36,7 @@ int main(){
     push(&s, 20);
     push(&s, 30); //Redimensiona a pilha.
 
-    printStack(&s);
+    printStack(&s); //Imprime a pilha.
     printf("Topo da pilha: %d\n", peek(&s));
 
     pop(&s);
