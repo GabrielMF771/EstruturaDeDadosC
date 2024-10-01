@@ -44,9 +44,9 @@ int main(){
 
     printf("\n");
     printStack(&s);
-    printf("Topo da pilha após a remoção: %d\n", peek(&s));
+    printf("Topo da pilha apÃ³s a remoÃ§Ã£o: %d\n", peek(&s));
 
-    //Liberando a memória da pilha.
+    //Liberando a memÃ³ria da pilha.
     freeStack(&s);
 
     return 0;
@@ -55,7 +55,7 @@ int main(){
 
 void initializeStack(Stack *s, int initialCapacity) {
     if (s == NULL) {
-        printf("Ponteiro inválido!\n");
+        printf("Ponteiro invÃ¡lido!\n");
         exit(1);
     }
 
@@ -64,7 +64,7 @@ void initializeStack(Stack *s, int initialCapacity) {
     s->elements = (int*) malloc(initialCapacity * sizeof(int));
 
     if (s->elements == NULL) {
-        printf("Erro na alocação de memória!\n");
+        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
         exit(1);
     }
 }
@@ -72,7 +72,7 @@ void initializeStack(Stack *s, int initialCapacity) {
 void resizeStack(Stack *s) {
     int *newElements = (int*) realloc(s->elements, s->capacity * 2 * sizeof(int));
     if (newElements == NULL) {
-        printf("Erro na alocação de memória!\n");
+        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
         exit(1);
     }
 
@@ -81,11 +81,11 @@ void resizeStack(Stack *s) {
 }
 
 int isStackFull(Stack *s) {
-    return (s->top == s->capacity - 1);  // Se o topo for o último índice, a pilha está cheia.
+    return (s->top == s->capacity - 1);  // Se o topo for o Ãºltimo Ã­ndice, a pilha estÃ¡ cheia.
 }
 
 int isStackEmpty(Stack *s) {
-    return (s->top == -1); // Se o topo for -1, a pilha está vazia.
+    return (s->top == -1); // Se o topo for -1, a pilha estÃ¡ vazia.
 }
 
 void freeStack(Stack *s) {
@@ -97,7 +97,7 @@ void freeStack(Stack *s) {
 
 void printStack(Stack *s) {
     if (isStackEmpty(s)) {
-        printf("\nA pilha está vazia!\n\n");
+        printf("\nA pilha estÃ¡ vazia!\n\n");
     } else {
         printf("Pilha: { ");
         for (int i = s->top; i >= 0; i--) {
@@ -109,7 +109,7 @@ void printStack(Stack *s) {
 
 void push(Stack *s, int value) {
     if (s == NULL) {
-        printf("Ponteiro inválido!\n");
+        printf("Ponteiro invÃ¡lido!\n");
         return;
     }
 
@@ -122,12 +122,12 @@ void push(Stack *s, int value) {
 
 int pop(Stack *s) {
     if (s == NULL) {
-        printf("Ponteiro inválido!\n");
+        printf("Ponteiro invÃ¡lido!\n");
         return -1;
     }
 
     if (isStackEmpty(s)) {
-        printf("\nA pilha está vazia!\n\n");
+        printf("\nA pilha estÃ¡ vazia!\n\n");
         return -1;
     } else {
         int value = s->elements[s->top];
@@ -138,12 +138,12 @@ int pop(Stack *s) {
 
 int peek(Stack *s) {
     if (s == NULL) {
-        printf("Ponteiro inválido!\n");
+        printf("Ponteiro invÃ¡lido!\n");
         return -1;
     }
 
     if (isStackEmpty(s)) {
-        printf("\nA pilha está vazia!\n\n");
+        printf("\nA pilha estÃ¡ vazia!\n\n");
         return -1;
     } else {
         return s->elements[s->top];
