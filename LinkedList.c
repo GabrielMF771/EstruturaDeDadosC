@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Cria a estrutura do nó
 typedef struct nodeitem{
     int item;
     struct nodeitem *next;
 }node;
 
+//Cria a estrutura da lista
 typedef struct{
     node *first;
 }linkedlist;
 
+//Declarações
 linkedlist *createlist();
 node *createNode(int value);
 void addItem(linkedlist *list, int value, int pos);
@@ -19,7 +22,7 @@ void showList(linkedlist *list);
 int lenght(linkedlist *list);
 
 int main(){
-    linkedlist *list = createlist();
+    linkedlist *list = createlist(); //Cria a lista
 
     addItem(list,10,1);
     addItem(list,20,2);
@@ -31,8 +34,8 @@ int main(){
     printf("Tamanho atual da lista: %d", lenght(list));
     printf("\n\n");
 
-    removeItem(list, 5);
-    removeItem(list, 3);
+    removeItem(list, 5); //Remove o último elemento da lista
+    removeItem(list, 3); //Remove um elemento no meio da lista
 
     showList(list);
     printf("Tamanho atual da lista: %d", lenght(list));
@@ -40,6 +43,7 @@ int main(){
 
 }
 
+//Funções
 linkedlist *createlist(){
     linkedlist *list = (linkedlist*)malloc(sizeof(linkedlist));
     list->first = NULL;
