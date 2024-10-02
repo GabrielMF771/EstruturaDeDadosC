@@ -40,7 +40,6 @@ int main(){
     showList(list);
     printf("Tamanho atual da lista: %d", lenght(list));
 
-
 }
 
 //Funções
