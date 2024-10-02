@@ -45,12 +45,24 @@ int main(){
 //Funções
 linkedlist *createlist(){
     linkedlist *list = (linkedlist*)malloc(sizeof(linkedlist));
+
+    if (list == NULL) {
+        printf("Erro na alocação de memória!\n");
+        exit(1);
+    }
+
     list->first = NULL;
     return list;
 }
 
 node *createNode(int value){
     node *newNode = (node*)malloc(sizeof(node));
+
+    if (newNode == NULL){
+        printf("Erro na alocação de memória!\n");
+        exit(1);
+    }
+
     newNode->item = value;
     newNode->next = NULL;
     return newNode;
