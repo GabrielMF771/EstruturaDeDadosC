@@ -45,17 +45,12 @@ int main(){
 }
 
 void initializeStack(Stack *s, int initialCapacity) {
-    if (s == NULL) {
-        printf("Ponteiro inválido!\n");
-        exit(1);
-    }
-
     s->top = -1;
     s->capacity = initialCapacity;
     s->elements = (int*) malloc(initialCapacity * sizeof(int));
 
     if (s->elements == NULL) {
-        printf("Erro na alocaçãoo de memória!\n");
+        printf("Erro na alocação de memória!\n");
         exit(1);
     }
 }
@@ -63,7 +58,7 @@ void initializeStack(Stack *s, int initialCapacity) {
 void resizeStack(Stack *s) {
     int *newElements = (int*) realloc(s->elements, s->capacity * 2 * sizeof(int));
     if (newElements == NULL) {
-        printf("Erro na alocaçãoo de memória!\n");
+        printf("Erro na alocação de memória!\n");
         exit(1);
     }
 
@@ -99,11 +94,6 @@ void printStack(Stack *s) {
 }
 
 void push(Stack *s, int value) {
-    if (s == NULL) {
-        printf("Ponteiro inválido!\n");
-        return;
-    }
-
     if (isStackFull(s)) {
         resizeStack(s);
     }
@@ -112,11 +102,6 @@ void push(Stack *s, int value) {
 }
 
 int pop(Stack *s) {
-    if (s == NULL) {
-        printf("Ponteiro inválido!\n");
-        return -1;
-    }
-
     if (isStackEmpty(s)) {
         printf("\nA pilha está vazia!\n\n");
         return -1;
@@ -128,11 +113,6 @@ int pop(Stack *s) {
 }
 
 int peek(Stack *s) {
-    if (s == NULL) {
-        printf("Ponteiro inválido!\n");
-        return -1;
-    }
-
     if (isStackEmpty(s)) {
         printf("\nA pilha está vazia!\n\n");
         return -1;
