@@ -46,7 +46,7 @@ int main(){
 
 void initializeStack(Stack *s, int initialCapacity) {
     if (s == NULL) {
-        printf("Ponteiro invÃ¡lido!\n");
+        printf("Ponteiro inválido!\n");
         exit(1);
     }
 
@@ -55,7 +55,7 @@ void initializeStack(Stack *s, int initialCapacity) {
     s->elements = (int*) malloc(initialCapacity * sizeof(int));
 
     if (s->elements == NULL) {
-        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
+        printf("Erro na alocaçãoo de memória!\n");
         exit(1);
     }
 }
@@ -63,7 +63,7 @@ void initializeStack(Stack *s, int initialCapacity) {
 void resizeStack(Stack *s) {
     int *newElements = (int*) realloc(s->elements, s->capacity * 2 * sizeof(int));
     if (newElements == NULL) {
-        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
+        printf("Erro na alocaçãoo de memória!\n");
         exit(1);
     }
 
@@ -88,7 +88,7 @@ void freeStack(Stack *s) {
 
 void printStack(Stack *s) {
     if (isStackEmpty(s)) {
-        printf("\nA pilha estÃ¡ vazia!\n\n");
+        printf("\nA pilha está vazia!\n\n");
     } else {
         printf("Pilha: { ");
         for (int i = s->top; i >= 0; i--) {
@@ -100,7 +100,7 @@ void printStack(Stack *s) {
 
 void push(Stack *s, int value) {
     if (s == NULL) {
-        printf("Ponteiro invÃ¡lido!\n");
+        printf("Ponteiro inválido!\n");
         return;
     }
 
@@ -113,12 +113,12 @@ void push(Stack *s, int value) {
 
 int pop(Stack *s) {
     if (s == NULL) {
-        printf("Ponteiro invÃ¡lido!\n");
+        printf("Ponteiro inválido!\n");
         return -1;
     }
 
     if (isStackEmpty(s)) {
-        printf("\nA pilha estÃ¡ vazia!\n\n");
+        printf("\nA pilha está vazia!\n\n");
         return -1;
     } else {
         int value = s->elements[s->top];
@@ -129,12 +129,12 @@ int pop(Stack *s) {
 
 int peek(Stack *s) {
     if (s == NULL) {
-        printf("Ponteiro invÃ¡lido!\n");
+        printf("Ponteiro inválido!\n");
         return -1;
     }
 
     if (isStackEmpty(s)) {
-        printf("\nA pilha estÃ¡ vazia!\n\n");
+        printf("\nA pilha está vazia!\n\n");
         return -1;
     } else {
         return s->elements[s->top];
