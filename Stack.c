@@ -67,11 +67,11 @@ void resizeStack(Stack *s) {
 }
 
 int isStackFull(Stack *s) {
-    return (s->top == s->capacity - 1);  // Se o topo for o Ãºltimo Ã­ndice, a pilha estÃ¡ cheia.
+    return (s->top == s->capacity - 1);  // Se o topo for o último índice, a pilha está cheia.
 }
 
 int isStackEmpty(Stack *s) {
-    return (s->top == -1); // Se o topo for -1, a pilha estÃ¡ vazia.
+    return (s->top == -1); // Se o topo for -1, a pilha está vazia.
 }
 
 void freeStack(Stack *s) {
