@@ -31,14 +31,14 @@ int main(){
     addItem(list,50,5);
 
     showList(list);
-    printf("Tamanho atual da lista: %d", lenght(list));
-    printf("\n\n");
+    printf("Tamanho atual da lista: %d\n", lenght(list));
+    printf("\n");
 
     removeItem(list, 5); //Remove o último elemento da lista
     removeItem(list, 3); //Remove um elemento no meio da lista
 
     showList(list);
-    printf("Tamanho atual da lista: %d", lenght(list));
+    printf("Tamanho atual da lista: %d\n", lenght(list));
 
 }
 
@@ -70,7 +70,7 @@ node *createNode(int value){
 
 void addItem(linkedlist *list, int value, int pos){
     if(pos < 1 || pos > lenght(list) + 1){
-        printf("Posição Inválida!");
+        printf("Posição Inválida!\n");
     }
 
     node *newNode = createNode(value);
@@ -92,7 +92,7 @@ void addItem(linkedlist *list, int value, int pos){
 
 void removeItem(linkedlist *list, int pos){
     if(pos < 1 || pos > lenght(list) + 1 || isEmpty(list)){
-        printf("Posição Inválida!");
+        printf("Posição Inválida!\n");
     }
 
     node *previousNode = list->first;
@@ -121,7 +121,7 @@ int isEmpty(linkedlist *list){
 
 void showList(linkedlist *list){
     if(isEmpty(list)){
-        printf("Lista Vazia!");
+        printf("Lista Vazia!\n");
     } else {
         node *current = list->first;
 
