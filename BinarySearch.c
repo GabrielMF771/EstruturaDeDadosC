@@ -49,22 +49,6 @@ int main(){
     return 0;
 }
 
-int binarySearch(int vet[], int value, int left, int right){
-    if(left > right){
-        return -1; //Retorna erro se o valor não for encontrado no array
-    }    
-
-    int mid = (right + left) / 2; //Acha o meio do array
-
-    if (value == vet[mid]){
-        return mid;
-    } else if(value > vet[mid]){
-        return binarySearch(vet, value, mid + 1, right); //Busca da metade pra frente do array
-    } else {
-        return binarySearch(vet, value, left, mid - 1); //Busca da metade para tras do array
-    }
-}
-
 void bubbleSort(int vet[], int tam){
         int min,aux;
 
@@ -79,5 +63,21 @@ void bubbleSort(int vet[], int tam){
         aux = vet[i];
         vet[i] = vet[min];
         vet[min] = aux;
+    }
+}
+
+int binarySearch(int vet[], int value, int left, int right){
+    if(left > right){
+        return -1; //Retorna erro se o valor não for encontrado no array
+    }    
+
+    int mid = (right + left) / 2; //Acha o meio do array
+
+    if (value == vet[mid]){
+        return mid;
+    } else if(value > vet[mid]){
+        return binarySearch(vet, value, mid + 1, right); //Busca da metade pra frente do array
+    } else {
+        return binarySearch(vet, value, left, mid - 1); //Busca da metade para tras do array
     }
 }
