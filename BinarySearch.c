@@ -2,16 +2,17 @@
 #include <stdlib.h>
 #include <locale.h>
 
+void bubbleSort(int vet[], int tam);
 int binarySearch(int vet[], int value, int left, int right);
 
 int main(){
     setlocale(LC_ALL, "Portuguese");
 
-    int vet[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int vet[9] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
     int value;
     int i;
 
-    printf("O vetor e: {");
+    printf("O vetor é: {");
 
     for(i = 0 ; i < 9 ; i++){
         if(vet[i] == vet[8]){
@@ -21,7 +22,19 @@ int main(){
         }
     }
 
-    printf("Digite o número que deseja encontrar no vetor: ");
+    bubbleSort(vet, 9);
+
+        printf("\nO vetor após a ordenação é: {");
+
+    for(i = 0 ; i < 9 ; i++){
+        if(vet[i] == vet[8]){
+            printf("%d}\n", vet[i]);
+        } else{
+            printf("%d, ", vet[i]);
+        }
+    }
+
+    printf("\nDigite o número que deseja encontrar no vetor: ");
     scanf("%d", &value);
     printf("\n");
 
@@ -49,5 +62,22 @@ int binarySearch(int vet[], int value, int left, int right){
         return binarySearch(vet, value, mid + 1, right); //Busca da metade pra frente do array
     } else {
         return binarySearch(vet, value, left, mid - 1); //Busca da metade para tras do array
+    }
+}
+
+void bubbleSort(int vet[], int tam){
+        int min,aux;
+
+    for(int i = 0; i<tam -1; i++){
+        min = i;
+
+        for(int j = i; j<tam; j++){
+            if(vet[j] < vet[min]){
+                min = j;
+            }
+        }
+        aux = vet[i];
+        vet[i] = vet[min];
+        vet[min] = aux;
     }
 }
