@@ -7,7 +7,7 @@ typedef struct nodeitem{
     struct nodeitem *next;
 }node;
 
-//Cria a estrutura da lista
+//Cria a estrutura da fila
 typedef struct{
     node *head;
     node *tail;
