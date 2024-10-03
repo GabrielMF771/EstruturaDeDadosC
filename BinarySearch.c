@@ -22,7 +22,7 @@ int main(){
         }
     }
 
-    bubbleSort(vet, 9);
+    bubbleSort(vet, 9); //Ordena o array em ordem crescente
 
         printf("\nO vetor após a ordenação é: {");
 
