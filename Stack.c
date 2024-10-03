@@ -1,122 +1,123 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
-typedef struct {
-    int top;
-    int capacity;
-    int *elements;
-} Stack;
+//Cria a estrutura do nó
+typedef struct nodeitem{
+    int item;
+    struct nodeitem *next;
+}node;
 
-void initializeStack(Stack *s, int initialCapacity);
-void resizeStack(Stack *s);
-int isStackFull(Stack *s);
-int isStackEmpty(Stack *s);
-void freeStack(Stack *s);
-void printStack(Stack *s);
-void push(Stack *s, int value);
-int pop(Stack *s);
-int peek(Stack *s);
+//Cria a estrutura da lista
+typedef struct{
+    node *top;
+}stack;
+
+//Declarações
+int isEmpty(stack *s);
+stack *createstack();
+node *createNode(int value);
+void push(stack *s, int value);
+void pop(stack *s);
+void showStack(stack *s);
+int lenght(stack *s);
 
 int main(){
-    setlocale(LC_ALL, "Portuguese");
+    stack *s = createstack(); //Cria a pilha
 
-    Stack s;
-    initializeStack(&s, 2);
+    push(s, 10);
+    push(s, 20);
+    push(s, 30);
+    push(s, 40);
+    push(s, 50);
 
-    push(&s, 10);
-    push(&s, 20);
-    push(&s, 30); //Redimensiona a pilha.
-
-    printStack(&s); //Imprime a pilha.
-    printf("Topo da pilha: %d\n", peek(&s));
-
-    pop(&s);
-    printf("\nUm elemento foi removido\n");
-
+    showStack(s);
+    printf("Tamanho atual da pilha: %d\n", lenght(s));
     printf("\n");
-    printStack(&s);
-    printf("Topo da pilha após a remoção: %d\n", peek(&s));
 
-    //Liberando a memória da pilha.
-    freeStack(&s);
+    pop(s); //Remove um elemento da pilha
+    pop(s); //Remove um elemento da pilha
 
+    showStack(s);
+    printf("Tamanho atual da pilha: %d\n", lenght(s));
+
+}
+
+//Funções
+int isEmpty(stack *s){
+    if(s->top == NULL){
+        return 1;
+    }
     return 0;
 }
 
-void initializeStack(Stack *s, int initialCapacity) {
-    s->top = -1;
-    s->capacity = initialCapacity;
-    s->elements = (int*) malloc(initialCapacity * sizeof(int));
+stack *createstack(){
+    stack *s = (stack*)malloc(sizeof(stack));
 
-    if (s->elements == NULL) {
-        printf("Erro na alocação de memória!\n");
-        exit(1);
-    }
-}
-
-void resizeStack(Stack *s) {
-    int *newElements = (int*) realloc(s->elements, s->capacity * 2 * sizeof(int));
-    if (newElements == NULL) {
+    if (s == NULL) {
         printf("Erro na alocação de memória!\n");
         exit(1);
     }
 
-    s->elements = newElements;
-    s->capacity *= 2;
+    s->top = NULL;
+    return s;
 }
 
-int isStackFull(Stack *s) {
-    return (s->top == s->capacity - 1);  // Se o topo for o último índice, a pilha está cheia.
+node *createNode(int value){
+    node *newNode = (node*)malloc(sizeof(node));
+
+    if (newNode == NULL){
+        printf("Erro na alocação de memória!\n");
+        exit(1);
+    }
+
+    newNode->item = value;
+    newNode->next = NULL;
+    return newNode;
 }
 
-int isStackEmpty(Stack *s) {
-    return (s->top == -1); // Se o topo for -1, a pilha está vazia.
+void push(stack *s, int value){
+    node *newNode = createNode(value);
+
+    newNode->next = s->top;
+    s->top = newNode;
 }
 
-void freeStack(Stack *s) {
-    free(s->elements);
-    s->elements = NULL;
-    s->top = -1;
-    s->capacity = 0;
+void pop(stack *s){
+    node *aux;
+
+    aux = s->top;
+    s->top = aux->next;
+    free(aux);
 }
 
-void printStack(Stack *s) {
-    if (isStackEmpty(s)) {
-        printf("\nA pilha está vazia!\n\n");
+void showStack(stack *s){
+    if(isEmpty(s)){
+        printf("Pilha Vazia!\n");
     } else {
-        printf("Pilha: { ");
-        for (int i = s->top; i >= 0; i--) {
-            printf("%d ", s->elements[i]);
+        node *current = s->top;
+
+        printf("Pilha: ");
+
+        while(current != NULL){
+            printf("%d ", current->item);
+            current = current->next;
         }
-        printf("}\n");
+        printf("\n");
     }
 }
 
-void push(Stack *s, int value) {
-    if (isStackFull(s)) {
-        resizeStack(s);
-    }
-    s->top++;
-    s->elements[s->top] = value;
-}
+int lenght(stack *s){
+    int i = 0;
 
-int pop(Stack *s) {
-    if (isStackEmpty(s)) {
-        printf("\nA pilha está vazia!\n\n");
-        return -1;
+    if(isEmpty(s)){
+        return i;
     } else {
-        int value = s->elements[s->top];
-        s->top--;
-        return value;
-    }
-}
+        node *current = s->top;
 
-int peek(Stack *s) {
-    if (isStackEmpty(s)) {
-        printf("\nA pilha está vazia!\n\n");
-        return -1;
-    } else {
-        return s->elements[s->top];
+        while(current != NULL){
+            current = current->next;
+            i++;
+        }
+        return i;
     }
 }
