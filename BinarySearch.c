@@ -24,7 +24,7 @@ int main(){
 
     bubbleSort(vet, 9); //Ordena o array em ordem crescente
 
-        printf("\nO vetor após a ordenação é: {");
+    printf("\nO vetor após a ordenação é: {");
 
     for(i = 0 ; i < 9 ; i++){
         if(vet[i] == vet[8]){
@@ -50,19 +50,18 @@ int main(){
 }
 
 void bubbleSort(int vet[], int tam){
-        int min,aux;
-
-    for(int i = 0; i<tam -1; i++){
-        min = i;
-
-        for(int j = i; j<tam; j++){
-            if(vet[j] < vet[min]){
-                min = j;
+    int i, j, temp;
+    
+    for (i = 0; i < tam - 1; i++) {
+        for (j = 0; j < tam - i - 1; j++) {
+            
+            if (vet[j] > vet[j+1]) {
+                
+                temp = vet[j];
+                vet[j] = vet[j+1];
+                vet[j+1] = temp;
             }
         }
-        aux = vet[i];
-        vet[i] = vet[min];
-        vet[min] = aux;
     }
 }
 
