@@ -35,5 +35,7 @@ int main(){
         printf("%d ", vet[i]);
     }
 
+    printf("\n");
+    
     return 0;
 }
