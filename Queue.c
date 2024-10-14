@@ -28,6 +28,8 @@ int main(){
     
     queue *q = createqueue(); //Cria a fila
 
+    printf("Fila\n\n");
+
     enqueue(q, 10);
     enqueue(q, 20);
     enqueue(q, 30);
