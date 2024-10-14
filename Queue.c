@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
-//Cria a estrutura do nÃ³
+//Cria a estrutura do nó
 typedef struct nodeitem{
     int item;
     struct nodeitem *next;
@@ -13,7 +14,7 @@ typedef struct{
     node *tail;
 }queue;
 
-//DeclaraÃ§Ãµes
+//Declarações
 int isEmpty(queue *q);
 queue *createqueue();
 node *createNode(int value);
@@ -23,6 +24,8 @@ void showQueue(queue *q);
 int lenght(queue *q);
 
 int main(){
+    setlocale(LC_ALL, "Portuguese");
+    
     queue *q = createqueue(); //Cria a fila
 
     enqueue(q, 10);
@@ -53,7 +56,7 @@ queue *createqueue(){
     queue *q = (queue*)malloc(sizeof(queue));
 
     if (q == NULL) {
-        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
+        printf("Erro na alocação de memória!\n");
         exit(1);
     }
 
@@ -66,7 +69,7 @@ node *createNode(int value){
     node *newNode = (node*)malloc(sizeof(node));
 
     if (newNode == NULL){
-        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
+        printf("Erro na alocação de memória!\n");
         exit(1);
     }
 
@@ -89,7 +92,7 @@ void enqueue(queue *q, int value){
 
 void dequeue(queue *q){
     if (isEmpty(q)){
-        printf("A fila estÃ¡ vazia!\n");
+        printf("A fila está vazia!\n");
     }
 
     node *newNode = q->head;
@@ -100,7 +103,7 @@ void dequeue(queue *q){
 
 void showQueue(queue *q){
     if(isEmpty(q)){
-        printf("A fila estÃ¡ vazia!\n");
+        printf("A fila está vazia!\n");
     } else {
         node *current = q->head;
 
