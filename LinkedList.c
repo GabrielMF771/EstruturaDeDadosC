@@ -24,8 +24,10 @@ int lenght(linkedlist *list);
 
 int main(){
     setlocale(LC_ALL, "Portuguese");
-    
+
     linkedlist *list = createlist(); //Cria a lista
+
+    printf("Lista Encadeada\n\n");
 
     addItem(list,10,1);
     addItem(list,20,2);
