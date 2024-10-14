@@ -30,6 +30,8 @@ int main(){
 
     Hash *hash = createHash(); //Cria a HashTable
 
+    printf("Tabela Hash\n\n");
+
     //Inserindo os Nós
     insertNode(hash, "BSB", "Brasilia");
     insertNode(hash, "CWB", "Curitiba");
