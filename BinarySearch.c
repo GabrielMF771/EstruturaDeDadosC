@@ -12,6 +12,8 @@ int main(){
     int value;
     int i;
 
+    printf("Busca Binária\n\n");
+
     printf("O vetor é: {");
 
     for(i = 0 ; i < 9 ; i++){
