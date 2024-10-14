@@ -24,6 +24,8 @@ int lenght(stack *s);
 int main(){
     stack *s = createstack(); //Cria a pilha
 
+    printf("Pilha\n\n");
+
     push(s, 10);
     push(s, 20);
     push(s, 30);
