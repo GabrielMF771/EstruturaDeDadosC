@@ -21,6 +21,8 @@ int main(){
     setlocale(LC_ALL, "Portuguese");
     int vet[TAMANHO] = {10,9,8,7,6,5,4,3,2,1}, i;
     
+    printf("Bubble Sort\n\n");
+    
     printf("Vetor antes da ordenação: ");
     for(i = 0 ; i < TAMANHO ; i++){
         printf("%d ", vet[i]);
