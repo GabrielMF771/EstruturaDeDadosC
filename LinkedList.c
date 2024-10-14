@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
-//Cria a estrutura do nÃ³
+//Cria a estrutura do nó
 typedef struct nodeitem{
     int item;
     struct nodeitem *next;
@@ -12,7 +13,7 @@ typedef struct{
     node *first;
 }linkedlist;
 
-//DeclaraÃ§Ãµes
+//Declarações
 linkedlist *createlist();
 node *createNode(int value);
 void addItem(linkedlist *list, int value, int pos);
@@ -22,6 +23,8 @@ void showList(linkedlist *list);
 int lenght(linkedlist *list);
 
 int main(){
+    setlocale(LC_ALL, "Portuguese");
+    
     linkedlist *list = createlist(); //Cria a lista
 
     addItem(list,10,1);
@@ -34,20 +37,20 @@ int main(){
     printf("Tamanho atual da lista: %d\n", lenght(list));
     printf("\n");
 
-    removeItem(list, 5); //Remove o Ãºltimo elemento da lista
-    removeItem(list, 3); //Remove um elemento no meio da lista
+    removeItem(list, 5); //Remove o último elemento da lista
+    removeItem(list, 1); //Remove o primeiro elemento da lista
 
     showList(list);
     printf("Tamanho atual da lista: %d\n", lenght(list));
 
 }
 
-//FunÃ§Ãµes
+//Funções
 linkedlist *createlist(){
     linkedlist *list = (linkedlist*)malloc(sizeof(linkedlist));
 
     if (list == NULL) {
-        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
+        printf("Erro na alocação de memória!\n");
         exit(1);
     }
 
@@ -59,7 +62,7 @@ node *createNode(int value){
     node *newNode = (node*)malloc(sizeof(node));
 
     if (newNode == NULL){
-        printf("Erro na alocaÃ§Ã£o de memÃ³ria!\n");
+        printf("Erro na alocação de memória!\n");
         exit(1);
     }
 
@@ -70,7 +73,7 @@ node *createNode(int value){
 
 void addItem(linkedlist *list, int value, int pos){
     if(pos < 1 || pos > lenght(list) + 1){
-        printf("PosiÃ§Ã£o InvÃ¡lida!\n");
+        printf("Posição Inválida!\n");
     }
 
     node *newNode = createNode(value);
@@ -92,7 +95,7 @@ void addItem(linkedlist *list, int value, int pos){
 
 void removeItem(linkedlist *list, int pos){
     if(pos < 1 || pos > lenght(list) + 1 || isEmpty(list)){
-        printf("PosiÃ§Ã£o InvÃ¡lida!\n");
+        printf("Posição Inválida!\n");
     }
 
     node *previousNode = list->first;
