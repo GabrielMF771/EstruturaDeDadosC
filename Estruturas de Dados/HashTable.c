@@ -80,7 +80,7 @@ unsigned int hashCode(char *key){ //Função Hash djb2
     unsigned int c;
 
     while((c = *key++)){
-        hash = ((hash << 5) + hash) + c; //hash * 33 + c
+        hash = ((hash << 5) + hash) + c; //hash * 32 + c
     }
 
     return hash % HASH_SIZE;
