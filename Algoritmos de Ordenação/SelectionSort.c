@@ -7,7 +7,6 @@
 void selectionsort(int vet[], int tam) {
     int i, j, min_idx, aux;
 
-    // Percorre todo o array
     for (i = 0; i < tam - 1; i++) {
         // Encontra o menor elemento no restante do array
         min_idx = i; // Inicialmente assume que o menor é o primeiro da sequência

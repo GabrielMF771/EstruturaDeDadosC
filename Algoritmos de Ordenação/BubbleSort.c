@@ -3,6 +3,7 @@
 
 #define TAMANHO 10
 
+// Função para implementar o Bubble Sort
 void bubblesort(int vet[], int tam){
     int i, j, aux;
 
