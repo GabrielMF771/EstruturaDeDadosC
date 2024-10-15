@@ -3,6 +3,7 @@
 
 #define TAMANHO 10
 
+// Função para implementar o Quick Sort
 void quicksort(int vet[], int inicio, int fim) {
     int i, j, pivo, aux;
 
