@@ -79,10 +79,8 @@ unsigned int hashCode(char *key){ //Função Hash djb2
     unsigned long hash = 6318;
     unsigned int c;
 
-    while((c = *key++)){
+    while((c = *key++))
         hash = ((hash << 5) + hash) + c; //hash * 32 + c
-    }
-
     return hash % HASH_SIZE;
 }
 
