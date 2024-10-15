@@ -34,7 +34,6 @@ int main() {
 
     printf("\n");
 
-    // Chama a função insertionsort para ordenar o vetor
     insertionsort(vet, TAMANHO);
 
     printf("\nVetor após a ordenação: ");
