@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Cria a estrutura do nó
+//Create node structure
 typedef struct nodeitem{
     int item;
     struct nodeitem *next;
 }node;
 
-//Cria a estrutura da pilha
+//Create stack structure
 typedef struct{
     node *top;
 }stack;
 
-//Declarações
+//Functions declaration
 int isEmpty(stack *s);
 stack *createstack();
 node *createNode(int value);
@@ -22,9 +22,9 @@ void showStack(stack *s);
 int lenght(stack *s);
 
 int main(){
-    stack *s = createstack(); //Cria a pilha
+    stack *s = createstack(); //Create the stack
 
-    printf("Pilha\n\n");
+    printf("Stack\n\n");
 
     push(s, 10);
     push(s, 20);
@@ -33,18 +33,18 @@ int main(){
     push(s, 50);
 
     showStack(s);
-    printf("Tamanho atual da pilha: %d\n", lenght(s));
+    printf("Stack size: %d\n", lenght(s));
     printf("\n");
 
-    pop(s); //Remove um elemento da pilha
-    pop(s); //Remove um elemento da pilha
+    pop(s); //Temove an element from the stack
+    pop(s); //Temove an element from the stack
 
     showStack(s);
-    printf("Tamanho atual da pilha: %d\n", lenght(s));
+    printf("Stack size: %d\n", lenght(s));
 
 }
 
-//Funções
+//Functions implementation
 int isEmpty(stack *s){
     if(s->top == NULL){
         return 1;
@@ -56,7 +56,7 @@ stack *createstack(){
     stack *s = (stack*)malloc(sizeof(stack));
 
     if (s == NULL) {
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -68,7 +68,7 @@ node *createNode(int value){
     node *newNode = (node*)malloc(sizeof(node));
 
     if (newNode == NULL){
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -94,11 +94,11 @@ void pop(stack *s){
 
 void showStack(stack *s){
     if(isEmpty(s)){
-        printf("Pilha Vazia!\n");
+        printf("The stack is empty!\n");
     } else {
         node *current = s->top;
 
-        printf("Pilha: ");
+        printf("Stack: ");
 
         while(current != NULL){
             printf("%d ", current->item);
