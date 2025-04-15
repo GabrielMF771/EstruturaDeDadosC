@@ -1,19 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
-//Cria a estrutura do nó
+//Create node structure
 typedef struct nodeitem{
     int item;
     struct nodeitem *next;
 }node;
 
-//Cria a estrutura da lista
+//Create list structure
 typedef struct{
     node *first;
 }linkedlist;
 
-//Declarações
+//Declare functions
 linkedlist *createlist();
 node *createNode(int value);
 void addItem(linkedlist *list, int value, int pos);
@@ -23,11 +22,9 @@ void showList(linkedlist *list);
 int lenght(linkedlist *list);
 
 int main(){
-    setlocale(LC_ALL, "Portuguese");
+    linkedlist *list = createlist(); //Create a new list
 
-    linkedlist *list = createlist(); //Cria a lista
-
-    printf("Lista Encadeada\n\n");
+    printf("Linked List\n\n");
 
     addItem(list,10,1);
     addItem(list,20,2);
@@ -36,23 +33,23 @@ int main(){
     addItem(list,50,5);
 
     showList(list);
-    printf("Tamanho atual da lista: %d\n", lenght(list));
+    printf("List size: %d\n", lenght(list));
     printf("\n");
 
-    removeItem(list, 5); //Remove o último elemento da lista
-    removeItem(list, 1); //Remove o primeiro elemento da lista
+    removeItem(list, 5); //Remove the last element of the list
+    removeItem(list, 1); //Remove the first element of the list
 
     showList(list);
-    printf("Tamanho atual da lista: %d\n", lenght(list));
+    printf("List size: %d\n", lenght(list));
 
 }
 
-//Funções
+//Functions implementation
 linkedlist *createlist(){
     linkedlist *list = (linkedlist*)malloc(sizeof(linkedlist));
 
     if (list == NULL) {
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -64,7 +61,7 @@ node *createNode(int value){
     node *newNode = (node*)malloc(sizeof(node));
 
     if (newNode == NULL){
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -75,7 +72,7 @@ node *createNode(int value){
 
 void addItem(linkedlist *list, int value, int pos){
     if(pos < 1 || pos > lenght(list) + 1){
-        printf("Posição Inválida!\n");
+        printf("Invalid Position!\n");
     }
 
     node *newNode = createNode(value);
@@ -97,7 +94,7 @@ void addItem(linkedlist *list, int value, int pos){
 
 void removeItem(linkedlist *list, int pos){
     if(pos < 1 || pos > lenght(list) + 1 || isEmpty(list)){
-        printf("Posição Inválida!\n");
+        printf("Invalid Position!\n");
     }
 
     node *previousNode = list->first;
@@ -126,11 +123,11 @@ int isEmpty(linkedlist *list){
 
 void showList(linkedlist *list){
     if(isEmpty(list)){
-        printf("Lista Vazia!\n");
+        printf("The list is empty!\n");
     } else {
         node *current = list->first;
 
-        printf("Lista: ");
+        printf("List: ");
 
         while(current != NULL){
             printf("%d ", current->item);
