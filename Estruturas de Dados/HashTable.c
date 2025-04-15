@@ -1,23 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <locale.h>
 
 #define HASH_SIZE 100
 
-//Cria a estrutura do nó
+//Create node structure
 typedef struct Node{
     char *key;
     char *value;
     struct Node *next;
 } Node;
 
-//Cria a estrutura da HashTable
+//Create hash table structure
 typedef struct Hash{
     Node *list[HASH_SIZE];
 } Hash;
 
-//Declarações
+//Functions Declaration
 Hash *createHash();
 Node* createNode(char *key, char *value);
 unsigned int hashCode(char *key);
@@ -26,30 +25,28 @@ char* search(Hash *hash, char *key);
 
 //Main
 int main(){
-    setlocale(LC_ALL, "Portuguese");
+    Hash *hash = createHash(); //Create the hash table
 
-    Hash *hash = createHash(); //Cria a HashTable
+    printf("Hash Table\n\n");
 
-    printf("Tabela Hash\n\n");
-
-    //Inserindo os Nós
+    //Inserting the nodes
     insertNode(hash, "BSB", "Brasilia");
     insertNode(hash, "CWB", "Curitiba");
 
-    printf("Buscando e imprimindo os nós criados\n");
-    printf("Valor com a chave BSB: %s\n", search(hash, "BSB"));
-    printf("Valor com a chave CWB: %s\n", search(hash, "CWB"));
+    printf("Searhing and printing the nodes:\n");
+    printf("Value with \"BSB\" key: %s\n", search(hash, "BSB"));
+    printf("Value with \"CWB\" key: %s\n", search(hash, "CWB"));
 
-    printf("\nBuscando por uma chave inválida\n");
-    printf("Valor com a chave GRU: %s\n", search(hash, "GRU"));
+    printf("\nSearching for an invalid key:\n");
+    printf("Value with \"GRU\" key: %s\n", search(hash, "GRU"));
 }
 
-//Funções
+//Functions implementation
 Hash *createHash(){
     Hash *hash = (Hash*)malloc(sizeof(Hash));
 
     if(hash == NULL){
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -64,7 +61,7 @@ Node* createNode(char *key, char *value){
     Node *node = (Node*)malloc(sizeof(Node));
 
     if(node == NULL){
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -75,7 +72,7 @@ Node* createNode(char *key, char *value){
     return node;
 }
 
-unsigned int hashCode(char *key){ //Função Hash djb2
+unsigned int hashCode(char *key){ //hash function djb2
     unsigned long hash = 6318;
     unsigned int c;
 
@@ -111,5 +108,5 @@ char* search(Hash *hash, char *key){
         }
         node = node->next;
     }
-    return "Chave Inválida";
+    return "Invalid Key";
 }

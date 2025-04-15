@@ -12,7 +12,7 @@ typedef struct{
     node *first;
 }linkedlist;
 
-//Declare functions
+//Functions Declaration
 linkedlist *createlist();
 node *createNode(int value);
 void addItem(linkedlist *list, int value, int pos);
