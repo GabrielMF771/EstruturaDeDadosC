@@ -1,20 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
-//Cria a estrutura do nó
+//Create node structure
 typedef struct nodeitem{
     int item;
     struct nodeitem *next;
 }node;
 
-//Cria a estrutura da fila
+//Create queue structure
 typedef struct{
     node *head;
     node *tail;
 }queue;
 
-//Declarações
+//Functions Declaration
 int isEmpty(queue *q);
 queue *createqueue();
 node *createNode(int value);
@@ -24,11 +23,9 @@ void showQueue(queue *q);
 int lenght(queue *q);
 
 int main(){
-    setlocale(LC_ALL, "Portuguese");
-    
-    queue *q = createqueue(); //Cria a fila
+    queue *q = createqueue(); //Create the queue
 
-    printf("Fila\n\n");
+    printf("Queue\n\n");
 
     enqueue(q, 10);
     enqueue(q, 20);
@@ -37,14 +34,14 @@ int main(){
     enqueue(q, 50);
 
     showQueue(q);
-    printf("Tamanho atual da fila: %d\n", lenght(q));
+    printf("Queue size: %d\n", lenght(q));
     printf("\n");
 
-    dequeue(q); //Remove um elemento da fila
-    dequeue(q); //Remove um elemento da fila
+    dequeue(q); //Remove an element from the queue
+    dequeue(q); //Remove an element from the queue
 
     showQueue(q);
-    printf("Tamanho atual da fila: %d\n", lenght(q));
+    printf("Queue size: %d\n", lenght(q));
 }
 
 int isEmpty(queue *q){
@@ -58,7 +55,7 @@ queue *createqueue(){
     queue *q = (queue*)malloc(sizeof(queue));
 
     if (q == NULL) {
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -71,7 +68,7 @@ node *createNode(int value){
     node *newNode = (node*)malloc(sizeof(node));
 
     if (newNode == NULL){
-        printf("Erro na alocação de memória!\n");
+        printf("Allocation Error!\n");
         exit(1);
     }
 
@@ -94,7 +91,7 @@ void enqueue(queue *q, int value){
 
 void dequeue(queue *q){
     if (isEmpty(q)){
-        printf("A fila está vazia!\n");
+        printf("The queue is empty!\n");
     }
 
     node *newNode = q->head;
@@ -105,11 +102,11 @@ void dequeue(queue *q){
 
 void showQueue(queue *q){
     if(isEmpty(q)){
-        printf("A fila está vazia!\n");
+        printf("The queue is empty!\n");
     } else {
         node *current = q->head;
 
-        printf("Fila: ");
+        printf("Queue: ");
 
         while(current != NULL){
             printf("%d ", current->item);

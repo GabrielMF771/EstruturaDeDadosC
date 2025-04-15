@@ -36,7 +36,7 @@ int main(){
     printf("List size: %d\n", lenght(list));
     printf("\n");
 
-    removeItem(list, 5); //Remove the last element of the list
+    removeItem(list, 5); //Remove an element from the list
     removeItem(list, 1); //Remove the first element of the list
 
     showList(list);
